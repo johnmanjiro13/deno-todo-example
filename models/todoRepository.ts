@@ -8,16 +8,25 @@ export default class TodoRepository {
   }
 
   all() {
-    return this.todos;
+    return Array.from(this.todos.values());
   }
 
   find(id: number) {
     return this.todos.get(id);
   }
 
-  create() {}
+  add(todo: Todo) {
+    if (this.todos.size == 0) {
+      this.todos.set(1, todo);
+      console.log(this.todos);
+      return;
+    }
 
-  update() {}
+    const id = Array.from(this.todos.keys()).reduce((prev, current) => {
+      return (prev > current) ? prev : current;
+    });
+    this.todos.set(id, todo);
+  }
 
   delete() {}
 }
