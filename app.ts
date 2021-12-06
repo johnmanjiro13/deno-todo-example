@@ -1,5 +1,7 @@
 import { Application, Router } from "https://deno.land/x/oak/mod.ts";
 
+import todos from "./routes/todos.ts";
+
 const app = new Application();
 const router = new Router();
 
@@ -13,6 +15,7 @@ router
     ctx.response.body = "Hello World!";
   });
 
-app.use(router.routes());
+app.use(router.routes())
+  .use(todos.routes());
 
 await app.listen({ port: 8080 });
