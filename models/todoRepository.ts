@@ -25,8 +25,10 @@ export default class TodoRepository {
     const id = Array.from(this.todos.keys()).reduce((prev, current) => {
       return (prev > current) ? prev : current;
     });
-    this.todos.set(id, todo);
+    this.todos.set(id + 1, todo);
   }
 
-  delete() {}
+  remove(id: number) {
+    this.todos.delete(id);
+  }
 }
