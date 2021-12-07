@@ -18,7 +18,6 @@ export default class TodoRepository {
   add(todo: Todo) {
     if (this.todos.size == 0) {
       this.todos.set(1, todo);
-      console.log(this.todos);
       return;
     }
 

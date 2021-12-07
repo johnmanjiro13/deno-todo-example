@@ -17,10 +17,18 @@ export const TodoController = () => {
   const find = (ctx: RouterContext<"/todos/:id">) => {
     ctx.response.status = Status.OK;
     ctx.response.type = "json";
-    ctx.response.body = {
-      status: Status.OK,
-      data: todoRepository.find(+ctx.params.id),
-    };
+
+    const todo = todoRepository.find(+ctx.params.id);
+    if (!todo) {
+      ctx.response.body = {
+        status: Status.NotFound,
+      };
+    } else {
+      ctx.response.body = {
+        status: Status.OK,
+        data: todoRepository.find(+ctx.params.id),
+      };
+    }
   };
 
   const add = async (ctx: RouterContext<"/todos">) => {
