@@ -51,10 +51,21 @@ export const TodoController = () => {
     };
   };
 
+  const done = (ctx: RouterContext<"/todos/:id">) => {
+    todoRepository.done(+ctx.params.id);
+
+    ctx.response.status = Status.OK;
+    ctx.response.type = "json";
+    ctx.response.body = {
+      status: Status.OK,
+    };
+  };
+
   return {
     index,
     find,
     add,
     remove,
+    done,
   };
 };

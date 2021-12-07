@@ -16,6 +16,7 @@ export default class TodoRepository {
   }
 
   add(todo: Todo) {
+    todo.isDone = false;
     if (this.todos.size == 0) {
       this.todos.set(1, todo);
       return;
@@ -29,5 +30,13 @@ export default class TodoRepository {
 
   remove(id: number) {
     this.todos.delete(id);
+  }
+
+  done(id: number) {
+    const todo: Todo | undefined = this.todos.get(id);
+    if (todo) {
+      todo.isDone = true;
+      this.todos.set(id, todo);
+    }
   }
 }
