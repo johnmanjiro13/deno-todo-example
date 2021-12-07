@@ -1,4 +1,4 @@
-import { RouterContext, Status } from "https://deno.land/x/oak/mod.ts";
+import { RouterContext, Status } from "../deps.ts";
 import { Todo } from "../models/todo.ts";
 import TodoRepository from "../models/todoRepository.ts";
 
