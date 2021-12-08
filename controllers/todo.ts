@@ -27,7 +27,7 @@ export const TodoController = () => {
       ctx.response.status = Status.OK;
       ctx.response.body = {
         status: Status.OK,
-        data: todoRepository.find(+ctx.params.id),
+        data: todo,
       };
     }
   };
