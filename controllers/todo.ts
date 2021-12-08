@@ -15,15 +15,16 @@ export const TodoController = () => {
   };
 
   const find = (ctx: RouterContext<"/todos/:id">) => {
-    ctx.response.status = Status.OK;
     ctx.response.type = "json";
 
     const todo = todoRepository.find(+ctx.params.id);
     if (!todo) {
+      ctx.response.status = Status.NotFound;
       ctx.response.body = {
         status: Status.NotFound,
       };
     } else {
+      ctx.response.status = Status.OK;
       ctx.response.body = {
         status: Status.OK,
         data: todoRepository.find(+ctx.params.id),
